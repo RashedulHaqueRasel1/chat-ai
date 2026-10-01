@@ -1,0 +1,46 @@
+{
+  "session_1790834351026": {
+    "id": "session_1790834351026",
+    "title": "Hey,\n \nThanks for reaching out!\n",
+    "messages": [
+      {
+        "id": "msg_1790834351026",
+        "role": "user",
+        "content": "Hey,\n \nThanks for reaching out!\n \nI wanted to clarify that ancillary API keys are only available to approved IDX Broker Developer Partners and are not provisioned directly to standard client accounts. Ancillary keys allow Developer Partners additional API functionality when accessing the API on behalf of their clients, including increased hourly access limits and API preference overrides.\n \nIf you need an ancillary key for your integration, there are two options available:\n \nBecome an IDX Broker Developer Partner\n \nThe Developer Partner Program is designed for web developers, designers, and other professionals who build and maintain IDX Broker integrations for clients. The program includes access to Developer Partner resources and tools, a unique Developer Partner code, Developer Partner API capabilities, waived setup fees for clients referred through the program, and additional partner benefits as your number of managed accounts grows. Developer Partners are also expected to provide the primary support, development, and troubleshooting for the clients they manage.\n \nYou can learn more about the program and its requirements here:\n \nIDX Broker Developer Partner Program\n \nWork With an Existing Developer Partner\n \nIf you don't plan to provide development services for multiple IDX Broker clients, you can instead work with an existing IDX Broker Developer Partner and have their Developer Partner code added to your account. That partner can then use their ancillary key when making supported API requests on behalf of your account.\n \nYou can find an IDX Broker Developer Partner here:\n \nFind an IDX Broker Developer Partner\n \nIf you decide to work with a Developer Partner, just let us know which partner you've selected and we can help with getting their Developer Partner code associated with your account.\n \nBest,\nWilliam Fandrey\n\n\ner bangla mane ki?",
+        "timestamp": 1790834351026
+      },
+      {
+        "id": "msg_1790834380509",
+        "role": "assistant",
+        "content": "অবশ্যই, আমি এটি বাংলা ভাষায় অনুবাদ করতে পারি। নিচে সংক্ষিপ্ত সারাংশ দেওয়া হল:\n\nআপনি যদি এনসিলি এপিআই কী পেতে চান, তাহলে দুইটি পথ রয়েছে:\n\n1. আইডিএক্স ব্রোকার ডেভেলপার পার্টনার হওয়া: এটি ওয়েব ডেভেলপার, ডিজাইনার এবং অন্যান্য পেশাদারদের জন্য যারা ক্লাইয়েন্টদের জন্য আইডিএক্স ব্রোকার ইন্টিগ্রেশন তৈরি করে থাকে। এই প্রোগ্রামে বিশেষ সুবিধা রয়েছে, যেমন উন্নত এপিআই ক্ষমতা, ক্লাইয়েন্ট পরিচয়ের মাধ্যমে বাতিল করা হওয়া সেটআপ ফি ইত্যাদি।\n\n2. একজন প্রাক্তন ডেভেলপার পার্টনারের সাথে কাজ করা: যদি আপনি একাধিক আইডিএক্স ব্রোকার ক্লাইয়েন্টের জন্য ডেভেলপমেন্ট সেবা প্রদান করার পরিকল্পনা না করেন, তাহলে আপনি একজন প্রাক্তন ডেভেলপার পার্টনারের সাথে কাজ করতে পারেন। তারা তাদের এনসিলি কী ব্যবহার করে আপনার অ্যাকাউন্টের জন্য সমর্থিত এপিআই অনুরোধ করতে পারবেন।\n\nআপনি যদি একজন পার্টনারের সাথে কাজ করতে চান, তাহলে আমাদের জানান যে কোন পার্টনারটি আপনি নির্বাচন করেছেন এবং আমরা তাদের ডেভেলপার পার্টনার কোডটি আপনার অ্যাকাউন্টে যুক্ত করতে সাহায্য করব।",
+        "model": "Qwen/Qwen2.5-VL-72B-Instruct",
+        "timestamp": 1790834380508
+      }
+    ],
+    "createdAt": 1790834351026,
+    "updatedAt": 1790834380508,
+    "sharedAt": 1790835347979
+  },
+  "b2b6e988-b0db-4c75-9ca4-d5c740aadfed": {
+    "id": "b2b6e988-b0db-4c75-9ca4-d5c740aadfed",
+    "title": "test",
+    "messages": [
+      {
+        "id": "msg_1790835795857",
+        "role": "user",
+        "content": "test",
+        "timestamp": 1790835795857
+      },
+      {
+        "id": "msg_1790835795858",
+        "role": "assistant",
+        "content": "### পরীক্ষা সফল \nআমি এখানে আপনাকে সাহায্য করার জন্য। আপনি যদি কোনো প্রশ্ন বা অন্য কোনো বিষয়ে আলোচনা করতে চান, তাহলে আমাকে জানান। \n\n### Test Successful\nI'm here to assist you. If you have any questions or would like to discuss any topic, please let me know. \n\nকিভাবে আমি আপনাকে সাহায্য করতে পারি? \nHow can I assist you?",
+        "model": "meta-llama/Llama-3.3-70B-Instruct",
+        "timestamp": 1790835795857
+      }
+    ],
+    "createdAt": 1790835795857,
+    "updatedAt": 1790835799656,
+    "sharedAt": 1790835802021
+  }
+}

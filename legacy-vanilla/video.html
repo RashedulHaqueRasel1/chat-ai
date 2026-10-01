@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineText AI - Text to Video Studio</title>
+  <meta name="description" content="AI চালিত টেক্সট থেকে হাই-রেজোলিউশন সিনেমাটিক ভিডিও তৈরির স্টুডিও">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Background Glow Orbs -->
+  <div class="bg-glow orb-1"></div>
+  <div class="bg-glow orb-2"></div>
+  <div class="bg-glow orb-3"></div>
+
+  <!-- Header -->
+  <header class="navbar">
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="23 7 16 12 23 17 23 7"></polygon>
+          <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span class="brand-name">CineText <span class="gradient-text">AI</span></span>
+        <span class="badge">Studio v1.0</span>
+      </div>
+    </div>
+    
+    <div class="nav-actions">
+      <button id="apiKeyBtn" class="btn btn-secondary">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="7.5" cy="15.5" r="5.5"></circle>
+          <path d="m21 2-9.6 9.6"></path>
+          <path d="m15.5 7.5 3 3"></path>
+        </svg>
+        <span id="apiStatusText">API Key সেট করুন</span>
+      </button>
+      <a href="https://fal.ai/dashboard/keys" target="_blank" class="btn btn-ghost" title="ফ্রি Fal.ai API Key নিন">
+        ফ্রি Key নিন ↗
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Studio -->
+  <main class="studio-container">
+    <!-- Left Column: Controls & Prompting -->
+    <section class="control-panel glass-card">
+      <div class="panel-header">
+        <h2>গল্প বা প্রম্পট লিখুন</h2>
+        <span class="subtitle">আপনার কল্পনাকে সিনেমাটিক ভিডিওতে রূপান্তর করুন</span>
+      </div>
+
+      <div class="form-group">
+        <label for="promptInput">
+          ভিডিওর প্রম্পট (Prompt)
+          <button type="button" class="sample-prompt-btn" id="randomPromptBtn">🎲 প্রম্পট আইডিয়া</button>
+        </label>
+        <textarea 
+          id="promptInput" 
+          rows="4" 
+          placeholder="যেমন: A lone astronaut walking in a neon cyberpunk street in the rain, cinematic lighting, 8k, photorealistic motion..."
+        ></textarea>
+      </div>
+
+      <!-- Quick Style Selector -->
+      <div class="form-group">
+        <label>ভিডিওর স্টাইল (Visual Style)</label>
+        <div class="style-grid" id="styleGrid">
+          <button type="button" class="style-card active" data-style="cinematic">
+            <span class="style-emoji">🎬</span>
+            <span class="style-name">Cinematic</span>
+          </button>
+          <button type="button" class="style-card" data-style="anime">
+            <span class="style-emoji">✨</span>
+            <span class="style-name">Anime</span>
+          </button>
+          <button type="button" class="style-card" data-style="realistic">
+            <span class="style-emoji">📸</span>
+            <span class="style-name">Photorealistic</span>
+          </button>
+          <button type="button" class="style-card" data-style="fantasy">
+            <span class="style-emoji">🐉</span>
+            <span class="style-name">Fantasy 3D</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Settings Row -->
+      <div class="settings-row">
+        <div class="form-group flex-1">
+          <label for="aspectRatioSelect">অ্যাসপেক্ট রেশিও</label>
+          <select id="aspectRatioSelect" class="custom-select">
+            <option value="16:9">16:9 (YouTube/Landscape)</option>
+            <option value="9:16">9:16 (Shorts/TikTok/Reels)</option>
+            <option value="1:1">1:1 (Square/Instagram)</option>
+          </select>
+        </div>
+
+        <div class="form-group flex-1">
+          <label for="modelProviderSelect">AI মডেল প্রোভাইডার</label>
+          <select id="modelProviderSelect" class="custom-select">
+            <option value="fal-minimax">MiniMax Hailuo (Fal.ai)</option>
+            <option value="fal-wan">Wan 2.1 Video (Fal.ai)</option>
+            <option value="replicate-cogvideo">CogVideoX (Replicate)</option>
+            <option value="demo-mode">⚡ ফ্রি ডেমো মোড (Instant Preview)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Generate Button -->
+      <button id="generateBtn" class="btn btn-primary btn-generate">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+        <span>ভিডিও জেনারেট করুন (Generate Video)</span>
+      </button>
+
+      <div class="api-notice" id="apiNotice">
+        ℹ️ বর্তমানে <strong>ডেমো মোডে</strong> টেস্ট করতে পারেন অথবা উপরে "API Key সেট করুন" বাটনে ক্লিক করে ফ্রি Key যোগ করুন।
+      </div>
+    </section>
+
+    <!-- Right Column: Video Preview & Output -->
+    <section class="preview-panel glass-card">
+      <div class="panel-header">
+        <h2>ভিডিও প্রিভিউ</h2>
+        <span id="generationStatusBadge" class="status-badge idle">প্রস্তুত</span>
+      </div>
+
+      <div class="preview-stage" id="previewStage">
+        <!-- Initial Placeholder -->
+        <div class="placeholder-state" id="placeholderState">
+          <div class="placeholder-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M15 10l5-5v14l-5-5"></path>
+              <rect x="2" y="5" width="13" height="14" rx="2"></rect>
+            </svg>
+          </div>
+          <h3>কোনো ভিডিও প্রস্তুত নেই</h3>
+          <p>বামে প্রম্পট লিখে "Generate Video" বাটনে চাপুন</p>
+        </div>
+
+        <!-- Loading State -->
+        <div class="loading-state hidden" id="loadingState">
+          <div class="spinner">
+            <div class="spinner-ring"></div>
+            <div class="spinner-core">🎬</div>
+          </div>
+          <h3 id="loadingTitle">ভিডিও তৈরি হচ্ছে...</h3>
+          <p id="loadingSubtitle">AI ফ্রেম বাই ফ্রেম সিনেমাটিক দৃশ্য রেন্ডার করছে</p>
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+          <span class="timer" id="timerDisplay">০ সেকেন্ড অতিবাহিত</span>
+        </div>
+
+        <!-- Video Player Display -->
+        <div class="video-container hidden" id="videoContainer">
+          <video id="outputVideo" controls playsinline loop autoplay muted></video>
+          <div class="video-overlay-actions">
+            <a id="downloadVideoBtn" class="btn btn-download" download="cinetext_video.mp4">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              ডাউনলোড করুন (MP4)
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Videos Gallery -->
+      <div class="recent-gallery">
+        <h3>সাম্প্রতিক ভিডিও সমূহ (Gallery)</h3>
+        <div class="gallery-scroll" id="galleryContainer">
+          <p class="empty-gallery-msg">এখনো কোনো ভিডিও তৈরি করা হয়নি</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- API Key Modal -->
+  <div class="modal-overlay hidden" id="apiKeyModal">
+    <div class="modal-card glass-card">
+      <div class="modal-header">
+        <h3>🔑 API Key কনফিগারেশন</h3>
+        <button class="close-modal-btn" id="closeModalBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">
+          আপনার ফ্রি API Key দিন। এটি কেবল আপনার ব্রাউজারের লোকাল স্টোরেজে নিরাপদে জমা থাকবে।
+        </p>
+        
+        <div class="form-group">
+          <label for="falKeyInput">Fal.ai API Key</label>
+          <input type="password" id="falKeyInput" placeholder="যেমন: e0a359..." class="custom-input">
+          <small><a href="https://fal.ai/dashboard/keys" target="_blank">fal.ai/dashboard/keys</a> থেকে ফ্রি Key নিন</small>
+        </div>
+
+        <div class="form-group">
+          <label for="replicateKeyInput">Replicate API Token (ঐচ্ছিক)</label>
+          <input type="password" id="replicateKeyInput" placeholder="যেমন: r8_..." class="custom-input">
+          <small><a href="https://replicate.com/account/api-tokens" target="_blank">replicate.com</a> থেকে ফ্রি টোকেন নিন</small>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="clearKeysBtn">মুছে ফেলুন</button>
+        <button class="btn btn-primary" id="saveKeysBtn">সংরক্ষণ করুন (Save)</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
